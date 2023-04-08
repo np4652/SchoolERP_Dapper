@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Agri Tourism</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link href="jQuery-TE_v.1.4.0/jquery-te-1.4.0.css" rel="stylesheet" />
+    <script src="jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js"></script>
+    <style>
+        .required:after {
+            content: " *";
+            color: red;
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header text-center">
+            <h5 class="card-title" style="font-family:sans-serif">Add Agri Tourism</h5>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data">
+                <div class="container-fluid">
+                    <div class="row p-2">
+                        <div class="form-group col-sm-12">
+                            <label for="Title" class="required">Title</label>
+                            <input type="text" class="form-control" name="Title" id="Title" placeholder="Enter Title" />
+                            <input type="hidden" class="form-control" name="Id" id="Id" value="0" />
+                            <input type="hidden" name="Images" id="Images" value="" />
+                            <input type="hidden" name="Thumbnail" id="Thumbnail" value="" />
+                            <small class="text-danger Title"></small>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="Address">Address</label>
+                            <input type="text" class="form-control " name="Address" id="Address" placeholder="Enter Address" />
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="Landmark">Landmark</label>
+                            <input type="text" class="form-control " name="Landmark" id="Landmark" placeholder="Enter NearBy" />
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="ContactNo">ContactNo</label>
+                            <input type="text" class="form-control" name="ContactNo" id="ContactNo" placeholder="Enter Contact Number" />
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="NoOfCottage" class="required">No Of Cottage</label>
+                            <input type="text" class="form-control " name="NoOfCottage" id="NoOfCottage" placeholder="Enter number of cottage" />
+                            <small class="cottgeErr text-danger"></small>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="Pincode" class="required">Pincode</label>
+                            <input type="text" class="form-control " name="Pincode" id="Pincode" placeholder="Enter Pincode" />
+                            <small class="pinErr text-danger"></small>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="AreaId" class="required">Area</label>
+                            <select class="form-control " name="AreaId" id="AreaId">
+                                <option value="0">Select Area</option>
+                            </select>
+                            <small class="text-danger AreaId"></small>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="ImagesFile" class="required">Image</label>
+                            <input type="file" multiple class="form-control " name="ImagesFile" id="ImagesFile" accept=".jpg,.jpeg,.png" />
+                            <small class="text-danger Images"></small>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="ThumbnailFile" class="required">Thumbnail</label>
+                            <input type="file" multiple class="form-control " name="ThumbnailFile" id="ThumbnailFile" accept=".jpg,.jpeg,.png" />
+                            <small class="text-danger ThumbsImages"></small>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="Description">Description</label>
+                            <textarea type="text" class="form-control " name="Description" id="Description" placeholder="Enter Description"> </textarea>
+                        </div>
+                        <div class="col-12 text-center">
+                            <input type="submit" id="BtnSubmit" class="btn btn-success" value="Save" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        $(() => {
+            let id = urlParams.get('Id');
+            let token = urlParams.get('token');
+            if (id) {
+                FetchFarmDetails(id, token);
+            }
+            $("textarea").jqte();
+        })
+        $(document).on('focusout', '#Pincode', () => {
+            let code = parseInt($('#Pincode').val());
+            if (code) {
+                if (code.toString().length != 6) {
+                    $('.pinErr').text('Please enter valid pincode');
+                    return false;
+                } else {
+                    $('.pinErr').text('');
+                    FetchArea(code);
+                }
+            }
+        })
+        const FetchArea = (postalCode, selectedItem = '0') => {
+            $.get('https://api.kisantreat.com/api/Home/GetAreaListAsync', { postalCode }).done((result) => {
+                $('#AreaId').empty().append('<option value="0"> :: Select Area ::</option>').append(result.map(m => `<option value="${m.id}" ${m.id === selectedItem ? 'selected="true"' : ''}>${m.area}</option>`));
+            })
+        };
+        const FetchFarmDetails = (Id, token) => {
+            let url = new URL(window.location.href);
+            var settings = {
+                "url": url.origin + '/api/Bussiness/GetAgriTourism',
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Authorization": token,
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "Id": Id
+                }),
+            };
+            $.ajax(settings).done(function (response) {
+                FetchArea(response.result[0].pincode, response.result[0].areaId);
+                $('#Title').val(response.result[0].title);
+                $('#Landmark').val(response.result[0].landmark);
+                $('#Address').val(response.result[0].address);
+                $('#Pincode').val(response.result[0].pincode);
+                $('#NoOfCottage').val(response.result[0].noOfCottage);
+                $('#ContactNo').val(response.result[0].contactNo);
+                $('#Id').val(response.result[0].id);
+                $('.jqte_editor').text(response.result[0].description);
+                $('#Images').val(response.result[0].images);
+                $('#Thumbnail').val(response.result[0].thumbnail);
+            });
+        }
+        $('form').on("submit", function (e) {
+            e.preventDefault();
+            if (!ValidateForm()) {
+                return false;
+            }
+            let url = new URL(window.location.href);
+            enctype = 'multipart/form-data';
+            data = new FormData(this);
+            let authorizationToken = urlParams.get('token');
+            $.ajax({
+                headers: {
+                    "Authorization": authorizationToken
+                },
+                type: 'POST',
+                url: url.origin +'/api/Bussiness/AddAgriTourism',
+                data: data,
+                contentType: false,
+                processData: false,
+                mimeType: "multipart/form-data",
+                success: function (response) {
+                    var res = JSON.parse(response);
+                    if (res.statusCode == 1) {
+                        alert(res.responseText);
+                        $('form').trigger("reset");
+                        $('.jqte_editor').text('');
+                    } else if (res.statusCode == 3) {
+                        alert(res.responseText);
+                    }
+                    else {
+                        alert('Failed');
+                    }
+                },
+                error: function (xhr) {
+                    alert('Internal Server Error')
+                }
+            });
+        });
+        var ValidateForm = () => {
+            let param = {
+                Title: $('#Title').val(),
+                Pincode: $('#Pincode').val(),
+                AreaId: $('#AreaId').val(),
+                Images: $('#ImagesFile').val(),
+                Thumbs: $('#ThumbnailFile').val(),
+                NoOfCottage: $("#NoOfCottage").val()
+            }
+            if (param.Title == '') {
+                $('.Title').text('Please Enter Title');
+                return false;
+            }
+            if (param.Pincode == '') {
+                $('.pinErr').text('Please Select Pincode');
+                return false;
+            }
+            if (param.NoOfCottage == '') {
+                $('.cottgeErr').text('Please Enter Number Of Cottage');
+                return false;
+            }
+            if (param.AreaId == 0) {
+                $('.AreaId').text('Please Select Area');
+                return false;
+            }
+            if (param.Images == '') {
+                $('.Images').text('Please Select an Image');
+                return false;
+            }
+            if (param.Thumbs == '') {
+                $('.ThumbsImages').text('Please Select an Image');
+                return false;
+            }
+            if (param.NoOfCottage == '') {
+                $('.cottgeErr').text('Please Enter Number of Cottage');
+                return false;
+            }
+            $('.AreaId,.Pincode,.Title,.cottgeErr').text('');
+            return true;
+        }
+    </script>
+</body>
+</html>
