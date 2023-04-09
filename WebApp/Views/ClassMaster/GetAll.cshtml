@@ -1,0 +1,40 @@
+﻿@model Data.PagedResult<Entities.Models.ClassMasterColumn>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ClassId</th>
+            <th>ClassName</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            foreach (var item in Model.Data)
+            {
+                i++;
+                <tr data-class-Id="@item.ClassId">
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassName)
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" class="btnEdit">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script>
+    $('.btnEdit').unbind().click(e => _edit($(e.currentTarget).closest('tr').data().classId));
+</script>

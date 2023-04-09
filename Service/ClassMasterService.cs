@@ -28,6 +28,10 @@ namespace Service
             try
             {
                 string sqlQuery = @"INSERT INTO ClassMaster(ClassName) VALUES(@ClassName)";
+                if(entity.ClassId > 0)
+                {
+                    sqlQuery = @"UPDATE ClassMaster SET ClassName = @ClassName WHERE ClassId = @ClassId";
+                }
                 var result = await _repository.ExecuteAsync(sqlQuery, entity, commandType: CommandType.Text);
 
                 res = new Response
@@ -61,7 +65,7 @@ namespace Service
                 string sqlQuery = @$"SELECT * FROM {tableName};
                                  SELECT COUNT(1) TotalItems,@PageNumber PageNumber ,@PageSize PageSize FROM {tableName}";
 
-                var result = await _repository.GetMultipleAsync<PagedResult<ClassMasterColumn>, ClassMasterColumn>(sqlQuery,
+                var result = await _repository.GetMultipleAsync<ClassMasterColumn, PagedResult<ClassMasterColumn>>(sqlQuery,
                     new
                     {
                         request.PageNumber,
@@ -87,7 +91,7 @@ namespace Service
             
             try
             {
-                string sqlQuery = @"";
+                string sqlQuery = @"SELECT * FROM ClassMaster WHERE ClassId = @id";
                 res = await _repository.GetAsync<ClassMasterColumn>(sqlQuery, new { id }, CommandType.Text);
             
             }
@@ -95,7 +99,7 @@ namespace Service
             {
                 
             }
-            return res;
+            return res ?? new ClassMasterColumn();
         }
     }
 }

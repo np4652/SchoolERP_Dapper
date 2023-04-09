@@ -1,23 +1,17 @@
-﻿@model School.ViewModels.ClassMasterVM
-
+﻿@model Entities.Models.ClassMaster
 @{
-    ViewData["Title"] = "Edit";
+
 }
-
-<h1>Edit</h1>
-
-<h4>ClassMasterVM</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form action="/class/save">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input asp-for="ClassId" class="form-control" type="hidden" />
+                <input value="@Model.ClassId" name="@nameof(Model.ClassId)" class="form-control" type="hidden" />
             </div>
             <div class="form-group">
-                <label asp-for="ClassName" class="control-label"></label>
-                <input asp-for="ClassName" class="form-control" />
+                <label asp-for="ClassName" class="control-label">@nameof(Model.ClassName)</label>
+                <input value="@Model.ClassName" name="@nameof(Model.ClassName)" id="@nameof(Model.ClassName)" class="form-control"/>
                 <span asp-validation-for="ClassName" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -31,8 +25,6 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }

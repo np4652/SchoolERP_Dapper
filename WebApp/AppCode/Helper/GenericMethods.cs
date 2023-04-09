@@ -23,12 +23,12 @@ namespace WebApp.AppCode.Helper
         {
             T result = default(T);
             string data = P == null ? "" : JsonConvert.SerializeObject(P);
-            var apiResponse = await AppWebRequest.O.PostAsync($"{_apiBaseURL}/api/{URL}", data, Token);
+            var apiResponse = await AppWebRequest.O.PostAsync($"{_apiBaseURL}/{URL}", data, Token);
             if (apiResponse.HttpStatusCode == HttpStatusCode.OK)
             {
-                var deserializeObject = JsonConvert.DeserializeObject<Response<T>>(apiResponse.Result);
-                result = deserializeObject.Result;
-                return result;
+                result = JsonConvert.DeserializeObject<T>(apiResponse.Result);
+                //result = deserializeObject.Result;
+                //return result;
             }
             return result;
         }

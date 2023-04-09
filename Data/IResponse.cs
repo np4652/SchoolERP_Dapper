@@ -62,8 +62,8 @@ namespace Data
     public class PagedResult
     {
         public int TotalItems { get; set; }
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
     }
     public class PagedResult<T> : PagedResult where T : class
     {
@@ -77,6 +77,6 @@ namespace Data
     public class PagedRequest : PagedResult
     {
         public int LoginId { get; set; }
-        public dynamic Param { get; set; }
+        public dynamic? Param { get; set; }
     }
 }

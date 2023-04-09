@@ -64,7 +64,7 @@ namespace Service
                 string sqlQuery = @$"SELECT * FROM {tableName};
                                  SELECT COUNT(1) TotalItems,@PageNumber PageNumber ,@PageSize PageSize FROM {tableName}";
 
-                var result = await _repository.GetMultipleAsync<PagedResult<FeeVaribaleColumn>, FeeVaribaleColumn>(sqlQuery,
+                var result = await _repository.GetMultipleAsync<FeeVaribaleColumn,PagedResult<FeeVaribaleColumn>>(sqlQuery,
                     new
                     {
                         request.PageNumber,
