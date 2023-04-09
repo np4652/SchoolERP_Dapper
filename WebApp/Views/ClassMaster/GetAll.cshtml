@@ -2,7 +2,7 @@
 
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <span id="btnCreate" class="btn btn-primary">Create New</span>
 </p>
 <table class="table">
     <thead>
@@ -37,4 +37,5 @@
 </table>
 <script>
     $('.btnEdit').unbind().click(e => _edit($(e.currentTarget).closest('tr').data().classId));
+    $('#btnCreate').unbind().click(e => _edit(0));
 </script>

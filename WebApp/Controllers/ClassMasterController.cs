@@ -23,7 +23,7 @@ namespace WebApp.Controllers
         [HttpPost(nameof(Save))]
         public async Task<IActionResult> Save(ClassMaster classMaster)
         {
-            var res = await _httpRequest.Get<Response>($"/api/Class/GetAll", User?.GetLoggedInUserToken(), classMaster);
+            var res = await _httpRequest.Get<Response>($"Class/save", User?.GetLoggedInUserToken(), classMaster);
             return View(res);
         }
 
