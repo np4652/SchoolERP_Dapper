@@ -32,9 +32,16 @@ namespace WebAPI.Controllers
 
 
         [HttpPost(nameof(Save))]
-        public async Task<IActionResult> Save(Student feeGroup)
+        public async Task<IActionResult> Save(Student student)
         {
-            var res = await _studentService.AddAsync(feeGroup);
+            var res = await _studentService.AddAsync(student);
+            return Ok(res);
+        }
+
+        [HttpPost(nameof(FeeHistory))]
+        public async Task<IActionResult> FeeHistory(PagedRequest filter)
+        {
+            var res = await _studentService.FeeHistory(filter);
             return Ok(res);
         }
     }
