@@ -41,6 +41,11 @@ namespace Entities.Models
 
     public class StudentColumn : Student
     {
+        public string ClassName { get; set; }
+    }
 
+    public class StudentFilter
+    {
+        public int SessionId { get; set; }
     }
 }
