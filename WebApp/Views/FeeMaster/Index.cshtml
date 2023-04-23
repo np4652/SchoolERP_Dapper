@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-12"><h1>FeeVaribale</h1></div>
+    <div class="col-sm-12" id="partialView"></div>
+</div>
+@section Scripts{
+    <script>
+        const loadData = () => {
+            $.post('/FeeVaribale/getall').done(result => $('#partialView').html(result)).fail(xhr => { console.log(xhr.responseText); alert('error') }).always(() => { });
+        };
+
+        const _edit = id => {
+            $.post('/FeeVaribale/edit', { id }).done(result => $('#partialView').html(result)).fail(xhr => { }).always(() => { });
+        };
+        loadData();
+    </script>
+}

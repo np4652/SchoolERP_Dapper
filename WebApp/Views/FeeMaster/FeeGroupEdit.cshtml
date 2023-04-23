@@ -1,0 +1,46 @@
+﻿@model Entities.Models.FeeGroup
+@{
+
+}
+<div class="row">
+    <div class="col-md-4">
+        <form action="/FeeGroup/save">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input value="@Model.Id" name="@nameof(Model.Id)" class="form-control" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description " class="control-label">@nameof(Model.Description)</label>
+                <input value="@Model.Description " name="@nameof(Model.Description)" id="@nameof(Model.Description)" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">@nameof(Model.Description)</label>
+                <input value="@Model.Description" name="@nameof(Model.Description)" id="@nameof(Model.Description)" class="form-control" />
+                <span asp-validation-for="Description  " class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName " class="control-label">@nameof(Model.FromClass)</label>
+                <input value="@Model.FromClass " name="@nameof(Model.FromClass)" id="@nameof(Model.FromClass)" class="form-control" />
+                <span asp-validation-for="FromClass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToClass" class="control-label">@nameof(Model.ToClass)</label>
+                <input value="@Model.ToClass " name="@nameof(Model.ToClass)" id="@nameof(Model.ToClass)" class="form-control" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <span class="btn btn-link" onclick="loadData()">Back to List</span>
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+

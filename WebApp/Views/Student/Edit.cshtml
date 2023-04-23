@@ -1,0 +1,118 @@
+﻿@model Entities.Models.Student
+@{
+
+}
+<div class="row">
+    <div class="col-md-4">
+        <form action="/Student/save">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input value="@Model.Id" name="@nameof(Model.Id)" class="form-control" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label">@nameof(Model.FirstName )</label>
+                <input value="@Model.FirstName " name="@nameof(Model.FirstName)" id="@nameof(Model.FirstName)" class="form-control" />
+                <span asp-validation-for="ClassName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MiddleName " class="control-label">@nameof(Model.MiddleName )</label>
+                <input value="@Model.MiddleName " name="@nameof(Model.MiddleName )" id="@nameof(Model.MiddleName )" class="form-control" />
+                <span asp-validation-for="MiddleName " class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName " class="control-label">@nameof(Model.LastName )</label>
+                <input value="@Model.LastName " name="@nameof(Model.LastName )" id="@nameof(Model.LastName )" class="form-control" />
+                <span asp-validation-for="LastName " class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FatherName " class="control-label">@nameof(Model.FatherName )</label>
+                <input value="@Model.FatherName " name="@nameof(Model.FatherName )" id="@nameof(Model.FatherName)" class="form-control" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="MotherName  " class="control-label">@nameof(Model.MotherName  )</label>
+                <input value="@Model.MotherName  " name="@nameof(Model.MotherName  )" id="@nameof(Model.MotherName )" class="form-control" />
+                <span asp-validation-for="MotherName " class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="ContactNumber  " class="control-label">@nameof(Model.ContactNumber  )</label>
+                <input value="@Model.ContactNumber  " name="@nameof(Model.ContactNumber  )" id="@nameof(Model.ContactNumber)" class="form-control" />
+                <span asp-validation-for="ContactNumber " class="text-danger"></span>
+            </div>
+            v
+                        <div class="form-group">
+                <label asp-for="AlternateContact  " class="control-label">@nameof(Model.AlternateContact  )</label>
+                <input value="@Model.AlternateContact  " name="@nameof(Model.AlternateContact  )" id="@nameof(Model.AlternateContact )" class="form-control" />
+                <span asp-validation-for="AlternateContact " class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="Address  " class="control-label">@nameof(Model.Address  )</label>
+                <input value="@Model.Address  " name="@nameof(Model.Address  )" id="@nameof(Model.Address )" class="form-control" />
+                <span asp-validation-for="Address " class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="PostalCode  " class="control-label">@nameof(Model.PostalCode  )</label>
+                <input value="@Model.PostalCode  " name="@nameof(Model.PostalCode  )" id="@nameof(Model.PostalCode )" class="form-control" />
+                <span asp-validation-for="PostalCode " class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="IdentityType  " class="control-label">@nameof(Model.IdentityType  )</label>
+                <input value="@Model.IdentityType  " name="@nameof(Model.IdentityType  )" id="@nameof(Model.IdentityType )" class="form-control" />
+                <span asp-validation-for="IdentityType" class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="IdentityNumber" class="control-label">@nameof(Model.IdentityNumber)</label>
+                <input value="@Model.IdentityNumber" name="@nameof(Model.IdentityNumber  )" id="@nameof(Model.IdentityNumber)" class="form-control" />
+                <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="DOB" class="control-label">@nameof(Model.DOB)</label>
+                <input value="@Model.DOB" name="@nameof(Model.DOB)" id="@nameof(Model.DOB)" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="DOJ" class="control-label">@nameof(Model.DOJ)</label>
+                <input value="@Model.DOJ" name="@nameof(Model.DOJ)" id="@nameof(Model.DOJ)" class="form-control" />
+                <span asp-validation-for="DOJ" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="DOL" class="control-label">@nameof(Model.DOL)</label>
+                <input value="@Model.DOL" name="@nameof(Model.DOL)" id="@nameof(Model.DOL)" class="form-control" />
+                <span asp-validation-for="DOL" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="IdentityNumber" class="control-label">@nameof(Model.IdentityNumber)</label>
+                <input value="@Model.IdentityNumber" name="@nameof(Model.IdentityNumber  )" id="@nameof(Model.IdentityNumber)" class="form-control" />
+                <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="IsDiscontinued" class="control-label">@nameof(Model.IsDiscontinued)</label>
+                <input value="@Model.IsDiscontinued" name="@nameof(Model.IsDiscontinued)" id="@nameof(Model.IsDiscontinued)" class="form-control" />
+                <span asp-validation-for="IsDiscontinued" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="ClassId" class="control-label">@nameof(Model.ClassId)</label>
+                <input value="@Model.ClassId" name="@nameof(Model.ClassId)" id="@nameof(Model.ClassId)" class="form-control" />
+                <span asp-validation-for="ClassId" class="text-danger"></span>
+            </div>
+                                    <div class="form-group">
+                <label asp-for="Section" class="control-label">@nameof(Model.Section)</label>
+                <input value="@Model.Section" name="@nameof(Model.Section)" id="@nameof(Model.Section)" class="form-control" />
+                <span asp-validation-for="Section" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <span class="btn btn-link" onclick="loadData()">Back to List</span>
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

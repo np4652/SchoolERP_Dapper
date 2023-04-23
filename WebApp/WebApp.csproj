@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\ProjectSettings.json" />
+    <Content Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\VSWorkspaceState.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
@@ -46,6 +51,10 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\slnx.sqlite" />
+    <None Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\vertical-menu-template\config\applicationhost.config" />
+    <None Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\vertical-menu-template\FileContentIndex\214c00a1-c5e1-4add-83cb-dcce9915c971.vsidx" />
+    <None Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\vertical-menu-template\FileContentIndex\read.lock" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +70,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\lib\jquery-ui\dist\themes\" />
+    <Folder Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\vertical-menu-template\FileContentIndex\merges\" />
+    <Folder Include="wwwroot\Theme\html\ltr\vertical-menu-template\.vs\vertical-menu-template\v17\" />
   </ItemGroup>
 
 </Project>

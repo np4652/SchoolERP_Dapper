@@ -1,0 +1,61 @@
+﻿@model Data.PagedResult<Entities.Models.SessionMasterColumn>
+
+
+<p>
+    <span id="btnCreate" class="btn btn-primary">Create New</span>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>NewStudent</th>
+            <th>TotalTeacher</th>
+            <th>NewTeacher</th>
+            <th>TotalEmployee</th>
+            <th>NewEmployee</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            foreach (var item in Model.Data)
+            {
+                i++;
+                <tr data-Session-Id="@item.Id">
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.NewStudent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalTeacher)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewTeacher)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalEmployee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewEmployee)
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" class="btnEdit">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script>
+    $('.btnEdit').unbind().click(e => _edit($(e.currentTarget).closest('tr').data().Id));
+    $('#btnCreate').unbind().click(e => _edit(0));
+</script>

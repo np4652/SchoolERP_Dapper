@@ -1,0 +1,106 @@
+﻿@model Data.PagedResult<Entities.Models.StudentColumn>
+
+
+<p>
+    <span id="btnCreate" class="btn btn-primary">Create New</span>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>MiddleName</th>
+            <th>LastName</th>
+            <th>FatherName</th>
+            <th>MotherName</th>
+            <th>ContactNumber</th>
+            <th>AlternateContact</th>
+            <th>Address</th>
+            <th>PostalCode</th>
+            <th>IdentityType</th>
+            <th>IdentityNumber</th>
+            <th>DOB</th>
+            <th>DOJ</th>
+            <th>DOL</th>
+            <th>IsDiscontinued</th>
+            <th>ClassId</th>
+            <th>Section</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            foreach (var item in Model.Data)
+            {
+                i++;
+                <tr data-Student-Id="@item.Id">
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MiddleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FatherName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MotherName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.AlternateContact)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostalCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdentityType)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.DOJ)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.DOL)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.IsDiscontinued)
+                    </td>
+
+                     <td>
+                        @Html.DisplayFor(modelItem => item.ClassId)
+                    </td>
+
+                     <td>
+                        @Html.DisplayFor(modelItem => item.Section)
+                    </td>
+
+                    <td>
+                        <a href="javascript:void(0)" class="btnEdit">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script>
+    $('.btnEdit').unbind().click(e => _edit($(e.currentTarget).closest('tr').data().Id));
+    $('#btnCreate').unbind().click(e => _edit(0));
+</script>
+
