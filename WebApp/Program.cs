@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-builder.Services.AddMvc();
+builder.Services.AddMvc().AddRazorRuntimeCompilation();
 
 AppSettings appSettings = new AppSettings();
 builder.Configuration.Bind(appSettings);

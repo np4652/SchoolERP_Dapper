@@ -18,7 +18,7 @@ namespace Service
         private readonly IDapperRepository _repository;
         public SessionMasterService(IDapperRepository repository)
         {
-            repository = _repository;
+            _repository = repository;
         }
         public async Task<IResponse> AddAsync(SessionMaster entity)
         {
@@ -56,6 +56,11 @@ namespace Service
 
         public async Task<PagedResult<SessionMasterColumn>> GetAsync(PagedRequest request)
         {
+            //request = request ?? new PagedRequest
+            //{
+            //    PageNumber = 1,
+            //    PageSize = 50
+            //};
             var res = new PagedResult<SessionMasterColumn>();
             try
             {
@@ -63,7 +68,7 @@ namespace Service
                 string sqlQuery = @$"SELECT * FROM {tableName};
                                  SELECT COUNT(1) TotalItems,@PageNumber PageNumber ,@PageSize PageSize FROM {tableName}";
 
-                var result = await _repository.GetMultipleAsync<SessionMasterColumn,PagedResult<SessionMasterColumn>>(sqlQuery,
+                var result = await _repository.GetMultipleAsync<SessionMasterColumn, PagedResult<SessionMasterColumn>>(sqlQuery,
                     new
                     {
                         request.PageNumber,
