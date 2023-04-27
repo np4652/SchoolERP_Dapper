@@ -27,7 +27,7 @@ namespace WebApp.Controllers
             return View(res);
         }
 
-        [HttpPost(nameof(Edit))]
+        [HttpGet(nameof(Edit))]
         public async Task<IActionResult> Edit(int id)
         {
             var res = await _httpRequest.Get<ClassMasterColumn>($"Class/GetById/{id}", User?.GetLoggedInUserToken(), new { });

@@ -1,0 +1,60 @@
+﻿@model Entities.Models.SessionMaster
+@{
+
+}
+<div class="row">
+    <div class="col-md-4">
+        <form action="/Session/save">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input value="@Model.Id" name="@nameof(Model.Id)" class="form-control" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">@nameof(Model.Name )</label>
+                <input value="@Model.Name" name="@nameof(Model.Name)" id="@nameof(Model.Name)" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalStudent " class="control-label">@nameof(Model.TotalStudent)</label>
+                <input value="@Model.TotalStudent" name="@nameof(Model.TotalStudent)" id="@nameof(Model.TotalStudent)" class="form-control" />
+                <span asp-validation-for="TotalStudent" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="NewStudent" class="control-label">@nameof(Model.Name )</label>
+                <input value="@Model.Name" name="@nameof(Model.Name)" id="@nameof(Model.Name)" class="form-control" />
+                <span asp-validation-for="ClassName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalTeacher" class="control-label">@nameof(Model.TotalTeacher)</label>
+                <input value="@Model.TotalTeacher" name="@nameof(Model.TotalTeacher)" id="@nameof(Model.TotalTeacher)" class="form-control" />
+                <span asp-validation-for="TotalTeacher" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewTeacher" class="control-label">@nameof(Model.NewTeacher)</label>
+                <input value="@Model.NewTeacher" name="@nameof(Model.NewTeacher)" id="@nameof(Model.NewTeacher)" class="form-control" />
+                <span asp-validation-for="NewTeacher" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="TotalEmployee" class="control-label">@nameof(Model.TotalEmployee)</label>
+                <input value="@Model.TotalEmployee " name="@nameof(Model.TotalEmployee)" id="@nameof(Model.TotalEmployee)" class="form-control" />
+                <span asp-validation-for="TotalEmployee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewEmployee" class="control-label">@nameof(Model.NewEmployee)</label>
+                <input value="@Model.NewEmployee" name="@nameof(Model.NewEmployee)" id="@nameof(Model.NewEmployee)" class="form-control" />
+                <span asp-validation-for="ClassName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <span class="btn btn-link" onclick="loadData()">Back to List</span>
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

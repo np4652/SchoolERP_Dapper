@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-12"><h1>Student</h1></div>
+    <div class="col-sm-12" id="partialView"></div>
+</div>
+@section Scripts{
+    <script>
+        const loadData = () => {
+            $.post('/Student/getall').done(result => $('#partialView').html(result)).fail(xhr => { console.log(xhr.responseText); alert('error') }).always(() => { });
+        };
+
+        const _edit = id => {
+            $.post('/Student/edit', { id }).done(result => $('#partialView').html(result)).fail(xhr => { }).always(() => { });
+        };
+        loadData();
+    </script>
+}

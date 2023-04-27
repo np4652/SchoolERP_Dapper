@@ -1,0 +1,50 @@
+﻿@model Data.PagedResult<Entities.Models.FeeGroupColumn>
+
+
+<p>
+    <span id="btnCreate" class="btn btn-primary">Create New</span>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Description</th>
+            <th>FromClass</th>
+            <th>ToClass</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            foreach (var item in Model.Data)
+            {
+                i++;
+                <tr data-Session-Id="@item.Id">
+                    <td>@i</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FromClass)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ToClass)
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" class="btnEdit">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<script>
+    $('.btnEdit').unbind().click(e => _edit($(e.currentTarget).closest('tr').data().Id));
+    $('#btnCreate').unbind().click(e => _edit(0));
+</script>
+

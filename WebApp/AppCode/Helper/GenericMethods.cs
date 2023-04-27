@@ -22,13 +22,19 @@ namespace WebApp.AppCode.Helper
         public async Task<T> Get<T>(string URL, string Token, dynamic P = null)
         {
             T result = default(T);
-            string data = P == null ? "" : JsonConvert.SerializeObject(P);
-            var apiResponse = await AppWebRequest.O.PostAsync($"{_apiBaseURL}/{URL}", data, Token);
-            if (apiResponse.HttpStatusCode == HttpStatusCode.OK)
+            try
             {
-                result = JsonConvert.DeserializeObject<T>(apiResponse.Result);
-                //result = deserializeObject.Result;
-                //return result;
+                string data = P == null ? "" : JsonConvert.SerializeObject(P);
+                var apiResponse = await AppWebRequest.O.PostAsync($"{_apiBaseURL}/{URL}", data, Token);
+                if (apiResponse.HttpStatusCode == HttpStatusCode.OK)
+                {
+                    result = JsonConvert.DeserializeObject<T>(apiResponse.Result);
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
             return result;
         }

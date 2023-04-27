@@ -15,23 +15,27 @@
     </thead>
     <tbody>
         @{
-            int i = 0;
-            foreach (var item in Model.Data)
+            if(Model!=null)
             {
-                i++;
-                <tr data-class-Id="@item.ClassId">
-                    <td>@i</td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClassId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClassName)
-                    </td>
-                    <td>
-                        <a href="javascript:void(0)" class="btnEdit">Edit</a>
-                    </td>
-                </tr>
+                int i = 0;
+                foreach (var item in Model.Data)
+                {
+                    i++;
+                    <tr data-class-Id="@item.ClassId">
+                        <td>@i</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClassId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClassName)
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" class="btnEdit">Edit</a>
+                        </td>
+                    </tr>
+                }
             }
+
         }
     </tbody>
 </table>
