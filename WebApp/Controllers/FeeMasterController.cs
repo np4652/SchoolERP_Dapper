@@ -65,7 +65,7 @@ namespace WebApp.Controllers
         public async Task<IActionResult> GetAllFeeVaribale(PagedRequest request)
         {
             var res = await _httpRequest.Get<PagedResult<FeeVaribaleColumn>>($"Feemaster/Feevariable/GetAll", User?.GetLoggedInUserToken(), request);
-            return PartialView(res ?? new PagedResult<FeeVaribaleColumn> { Data = new List<FeeVaribaleColumn>() });
+            return PartialView("GetAll",res ?? new PagedResult<FeeVaribaleColumn> { Data = new List<FeeVaribaleColumn>() });
         }
     }
 }

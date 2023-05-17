@@ -40,8 +40,8 @@ namespace WebApp.Controllers
         [HttpPost(nameof(GetAll))]
         public async Task<IActionResult> GetAll(PagedRequest request)
         {
-            var res = await _httpRequest.Get<PagedResult<ClassMasterColumn>>($"Session/GetAll", User?.GetLoggedInUserToken(), request);
-            return PartialView(res ?? new PagedResult<ClassMasterColumn> { Data = new List<ClassMasterColumn>() });
+            var res = await _httpRequest.Get<PagedResult<SessionMasterColumn>>($"Session/GetAll", User?.GetLoggedInUserToken(), request);
+            return PartialView(res ?? new PagedResult<SessionMasterColumn> { Data = new List<SessionMasterColumn>() });
         }
     }
 }
