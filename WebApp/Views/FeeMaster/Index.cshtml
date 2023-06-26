@@ -13,7 +13,7 @@
         };
 
         const _edit = id => {
-            $.post('/FeeVaribale/edit', { id }).done(result => $('#partialView').html(result)).fail(xhr => { }).always(() => { });
+            $.post('/Feemaster/FeeVaribale/edit/id').done(result => $('#partialView').html(result)).fail(xhr => { }).always(() => { });
         };
         loadData();
     </script>

@@ -23,6 +23,7 @@ namespace WebApp.Controllers
         {
             return View();
         }
+
         [HttpPost(nameof(Save))]
         public async Task<IActionResult> Save(SessionMaster sessionMaster)
         {

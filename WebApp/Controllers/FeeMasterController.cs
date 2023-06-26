@@ -57,8 +57,8 @@ namespace WebApp.Controllers
         public async Task<IActionResult> EditFeeVaribale(int id)
         {
 
-            var res = await _httpRequest.Get<FeeVaribaleColumn>($"Feemaster/Feevariable/GetById/{id}", User?.GetLoggedInUserToken(), new { });
-            return PartialView(res);
+            var res = await _httpRequest.Get<FeeVaribale>($"Feemaster/Feevariable/GetById/{id}", User?.GetLoggedInUserToken(), new { });
+            return PartialView("Edit",res ?? new FeeVaribale());
         }
 
         [HttpPost($"FeeVaribale/{nameof(GetAll)}")]

@@ -79,7 +79,7 @@ namespace Service
             }
             catch (Exception ex)
             {
-
+                res = new PagedResult<FeeVaribaleColumn>();
             }
             return res;
         }

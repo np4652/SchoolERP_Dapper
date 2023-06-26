@@ -33,8 +33,8 @@ namespace WebApp.Controllers
         [HttpPost(nameof(Edit))]
         public async Task<IActionResult> Edit(int id)
         {
-            var res = await _httpRequest.Get<StudentColumn>($"student/GetById/{id}", User?.GetLoggedInUserToken(), new { });
-            return PartialView(res);
+            var res = await _httpRequest.Get<Student>($"student/GetById/{id}", User?.GetLoggedInUserToken(), new { });
+            return PartialView(res ?? new Student());
         }
 
         [HttpPost(nameof(GetAll))]
