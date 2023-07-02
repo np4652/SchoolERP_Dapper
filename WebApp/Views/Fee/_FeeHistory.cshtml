@@ -1,0 +1,42 @@
+﻿@model Data.PagedResult<Entities.Models.FeeHistory>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model!=null && Model.Data.Any())
+        {
+            int i = 0;
+            foreach (var item in Model.Data)
+            {
+                i++;
+                <tr data-Student-Id="@item.Id">
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">@i</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Fee History</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" class="btnEdit">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2">No Data Found</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+
+</script>
+

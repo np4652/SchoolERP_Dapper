@@ -33,7 +33,16 @@
             {
                 i++;
                 <tr data-Student-Id="@item.Id">
-                    <td>@i</td>
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">@i</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Fee History</a>
+                                <a class="dropdown-item" href="#">Link 2</a>
+                                <a class="dropdown-item" href="#">Link 3</a>
+                            </div>
+                        </div>
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Id)
                     </td>

@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Student</h1>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="ddlSession">
+                            <option value="1">2022-23</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 table-responsive" id="partialView"></div>
+</div>
+@section Scripts{
+    <script>
+        const loadData = () => {
+            $.post('/Fee/_FeeHistory').done(result => $('#partialView').html(result))
+            .fail(xhr => { console.log(xhr.responseText); alert('error') }).always(() => { });
+        };
+        loadData();
+    </script>
+}
