@@ -43,5 +43,18 @@ namespace WebApp.Controllers
             var res = await _httpRequest.Get<PagedResult<StudentColumn>>($"student/GetAll", User?.GetLoggedInUserToken(), request);
             return PartialView(res ?? new PagedResult<StudentColumn> { Data = new List<StudentColumn>() });
         }
+
+        [HttpGet(nameof(SessionWiseStudent))]
+        public async Task<IActionResult> SessionWiseStudent(PagedRequest request)
+        {
+            return View();
+        }
+
+        [HttpPost(nameof(_SessionWiseStudent))]
+        public async Task<IActionResult> _SessionWiseStudent(PagedRequest request)
+        {
+            var res = await _httpRequest.Get<PagedResult<StudentColumn>>($"student/GetSessionWiseStudent", User?.GetLoggedInUserToken(), request);
+            return PartialView(res ?? new PagedResult<StudentColumn> { Data = new List<StudentColumn>() });
+        }
     }
 }

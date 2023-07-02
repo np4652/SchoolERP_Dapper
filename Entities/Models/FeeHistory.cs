@@ -25,6 +25,8 @@ namespace Entities.Models
     public class FeeHistoryFilter
     {
         public int SessionId { get; set; }
+        public int StudentId { get; set; }
         public int ClassId { get; set; }
+        public Month Month { get; set; }
     }
 }

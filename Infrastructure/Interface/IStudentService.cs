@@ -5,6 +5,6 @@ namespace Infrastructure.Interface
 {
     public interface IStudentService : IRepository<Student, StudentColumn>
     {
-        Task<PagedResult<FeeHistory>> FeeHistory(PagedRequest request);
+        Task<PagedResult<StudentColumn>> SessionWiseStudent(PagedRequest request);
     }
 }

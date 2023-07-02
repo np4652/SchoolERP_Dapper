@@ -26,14 +26,12 @@ namespace Entities.Models
         public string Address { get; set; }
         [Required]
         public string PostalCode { get; set; }
-        [Required]
-        [ForeignKey("IdentityType")]
         public string IdentityType { get; set; }
         public string IdentityNumber { get; set; }
         [Required]
-        public DateTime DOB { get; set; }
-        public DateTime DOJ { get; set; }
-        public DateTime DOL { get; set; }
+        public string DOB { get; set; }
+        public string DOJ { get; set; }
+        public string DOL { get; set; }
         public bool IsDiscontinued { get; set; }
         public int ClassId { get; set; }
         public string Section { get; set; }

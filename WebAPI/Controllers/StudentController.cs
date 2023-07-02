@@ -2,7 +2,7 @@
 using Entities.Models;
 using Infrastructure.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Service;
+
 
 namespace WebAPI.Controllers
 {
@@ -38,11 +38,13 @@ namespace WebAPI.Controllers
             return Ok(res);
         }
 
-        [HttpPost(nameof(FeeHistory))]
-        public async Task<IActionResult> FeeHistory(PagedRequest filter)
+        
+
+        [HttpPost(nameof(GetSessionWiseStudent))]
+        public async Task<IActionResult> GetSessionWiseStudent(PagedRequest request)
         {
-            var res = await _studentService.FeeHistory(filter);
-            return Ok(res);
+            PagedResult<StudentColumn> data = await _studentService.SessionWiseStudent(request);
+            return Ok(data);
         }
     }
 }
